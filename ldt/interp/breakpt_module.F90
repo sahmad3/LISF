@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -137,7 +137,6 @@
 !program Breakpt
 module breakpoint_module
 !
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
   implicit none
 !
 !  logical :: lerr
@@ -169,7 +168,7 @@ integer function filedate(log1,filename)
 !
 ! argument variables
   integer, intent(INOUT) :: log1
-  character(len=LDT_CONST_PATH_LEN) :: filename
+  character*80 :: filename
 !
 ! local variables
   integer, dimension(12) :: fileinfo
@@ -395,14 +394,14 @@ end subroutine readcard
 subroutine brkprecip(brkfile,datebeg,dateend,ngauges,intmins,outfmt)
 !
 ! argument variables
-  character(len=*), intent(INOUT) :: brkfile
+  character*80, intent(INOUT) :: brkfile
   character*10, intent(INOUT) :: datebeg,dateend
   integer, intent(INOUT) :: ngauges,intmins,outfmt
 !
 ! local variables
   logical :: brkexists,ppdexists,idxexists,intfiles
   character*80 :: wrtline
-  character(len=LDT_CONST_PATH_LEN) :: logfile,ppdfile,idxfile,outfile
+  character*80 :: logfile,ppdfile,idxfile,outfile
   integer :: brkfunit = 50
   integer :: log1 = 60
   integer :: ppdfunit,idxfunit

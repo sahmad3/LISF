@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -30,7 +30,6 @@ module LDT_ANNMod
   use LDT_coreMod
   use LDT_timeMgrMod
   use LDT_logMod
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
 #if (defined USE_NETCDF3 || defined USE_NETCDF4) 
   use netcdf
 #endif
@@ -114,7 +113,7 @@ module LDT_ANNMod
      real, allocatable    :: maxout(:,:)
      real, allocatable    :: minout(:,:)
 
-     character(len=LDT_CONST_PATH_LEN) :: outfile
+     character*100             :: outfile
   end type ANNdatadec
 
   type(LDT_ANNdataStruc) :: LDT_ANNinput
@@ -673,7 +672,7 @@ contains
 #endif
    integer, external  :: LDT_create_subdirs 
    character(len=201) :: c_string     
-   character(len=LDT_CONST_PATH_LEN)      :: filename
+   character*100      :: filename
    integer            :: c,r,gid,dimID(2),tdimID
    integer            :: latId, lonId, varId,xtimeID
    real               :: lat(LDT_rc%lnc(n),LDT_rc%lnr(n))
@@ -927,7 +926,7 @@ contains
     character(len=10) :: time
     character(len=5)  :: zone
     integer, dimension(8) :: values
-    character(len=LDT_CONST_PATH_LEN)         :: outfile
+    character*100         :: outfile
 
 #if (defined USE_NETCDF3 || defined USE_NETCDF4) 
 
@@ -1051,7 +1050,7 @@ contains
     character(len=10)     :: time
     character(len=5)      :: zone
     integer, dimension(8) :: values
-    character(len=LDT_CONST_PATH_LEN)         :: outfile
+    character*100         :: outfile
     character*1000        :: allInpVarNames
     character*1000        :: allInpUnitNames
     character*1000        :: allOutVarNames
@@ -1269,7 +1268,7 @@ contains
     character(len=10)     :: time
     character(len=5)      :: zone
     integer, dimension(8) :: values
-    character(len=LDT_CONST_PATH_LEN)         :: outfile
+    character*100         :: outfile
     character*1000        :: allInpVarNames
     character*1000        :: allInpUnitNames
     character*1000        :: allOutVarNames

@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -38,8 +38,6 @@ module WRFoutv2_forcingMod
 !  \end{description}
 
 ! !USES: 
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
-
   implicit none
 
   PRIVATE
@@ -60,7 +58,7 @@ module WRFoutv2_forcingMod
      real         :: ts
      integer      :: nc, nr
      integer      :: mi
-     character(len=LDT_CONST_PATH_LEN) :: WRFoutv2dir
+     character*80 :: WRFoutv2dir
      real*8       :: WRFouttime1,WRFouttime2
      integer      :: findtime1,findtime2
      integer      :: nIter, st_iterid, en_iterid
@@ -87,7 +85,7 @@ module WRFoutv2_forcingMod
      real, allocatable :: metdata2(:,:,:) 
 
      ! Elevation file:
-     character(len=LDT_CONST_PATH_LEN) :: file_wrfelev
+     character*200 :: file_wrfelev
 
   end type WRFoutv2_type_dec
 

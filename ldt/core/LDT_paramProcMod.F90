@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -2475,7 +2475,7 @@ contains
         LDT_LSMparam_struc(n)%landcover%standard_name = &
             "AVHRR UMD landcover map"
 
-      case( "MODIS_Native", "MODIS_LIS" )
+      case( "MODIS_Native", "MODIS_LIS", "MCD12Q1" )
         LDT_rc%lc_type(n) = "IGBPNCEP"
         LDT_LSMparam_struc(n)%landcover%num_bins = 20
         LDT_LSMparam_struc(n)%landcover%standard_name = &

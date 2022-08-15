@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -24,7 +24,6 @@ subroutine read_cmorph (n, name_cmorph, findex, order, ferror_cmorph, iflg )
   use LDT_coreMod, only : LDT_rc, LDT_domain, LDT_masterproc
   use LDT_logMod, only : LDT_logunit, LDT_getNextUnitNumber, &
        LDT_releaseUnitNumber
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
   use LDT_metforcingMod, only : LDT_forc
   use cmorph_forcingMod, only : cmorph_struc
 
@@ -75,7 +74,7 @@ subroutine read_cmorph (n, name_cmorph, findex, order, ferror_cmorph, iflg )
   real      :: realprecip(xd,yd)
   real      :: testout(xd,yd)
   real, allocatable :: precip_regrid(:,:)        ! Interpolated precip array
-  character(len=LDT_CONST_PATH_LEN) :: fname, zname              ! Filename variables
+  character(len=99) :: fname, zname              ! Filename variables
   logical           :: file_exists
   integer           :: ftn
 !=== End Variable Definition =======================
@@ -97,20 +96,20 @@ subroutine read_cmorph (n, name_cmorph, findex, order, ferror_cmorph, iflg )
  ! compressed file 
  inquire(file=zname, EXIST=file_exists)
  if (file_exists) then
-    if(LDT_masterproc) write(LDT_logunit,*) "Reading CMORPH precipitation data:: ", trim(zname)
+    if(LDT_masterproc) write(LDT_logunit,*) "Reading CMORPH precipitation data:: ", zname
     call rdCmorZ(zname, precip, xd, yd, iflg)
  else
     ! binary file 
     inquire(file=fname, EXIST=file_exists)
     if (file_exists) then
-       if(LDT_masterproc) write(LDT_logunit,*) "Reading CMORPH precipitation data:: ", trim(fname)
+       if(LDT_masterproc) write(LDT_logunit,*) "Reading CMORPH precipitation data:: ", fname
        ftn = LDT_getNextUnitNumber()
        open(unit=ftn,file=fname, status='old',access='direct', &
             form='unformatted',recl=xd*yd*3,iostat=ios)
        read (ftn,rec=iflg) precip, timestamp, staid
        call LDT_releaseUnitNumber(ftn)
     else ! either file does not exist 
-       if(LDT_masterproc) write(LDT_logunit,*) "Missing CMORPH precipitation data ", trim(fname) 
+       if(LDT_masterproc) write(LDT_logunit,*) "Missing CMORPH precipitation data ", fname
        ferror_cmorph = 0
     endif
   end if
@@ -196,9 +195,9 @@ subroutine read_cmorph (n, name_cmorph, findex, order, ferror_cmorph, iflg )
              endif
           enddo
        enddo
-       write(LDT_logunit,*) "Obtained CMORPH precipitation data:: ", trim(fname)
+       write(LDT_logunit,*) "Obtained CMORPH precipitation data:: ", fname
     else
-       write(LDT_logunit,*) "Missing CMORPH precipitation data ", trim(fname)
+       write(LDT_logunit,*) "Missing CMORPH precipitation data ", fname   
     
     endif
 
@@ -214,7 +213,7 @@ subroutine read_cmorph (n, name_cmorph, findex, order, ferror_cmorph, iflg )
 
   integer      :: xd, yd, iflg
   character*1  :: precip(xd,yd)
-  character(len=*) :: zname
+  character*99 :: zname
   character*1, allocatable :: buff(:, :, :)
   integer      :: cm_readzipf, dlen, rdlen 
   

@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -28,7 +28,6 @@ module LDT_climoRstProcMod
   use LDT_logMod
   use LDT_fileIOMod
   use LDT_timeMgrMod
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
   use VIC_parmsMod
   use LDT_vic412rstMod
 
@@ -61,7 +60,7 @@ module LDT_climoRstProcMod
      integer,     allocatable     :: ftn(:)
      integer                      :: nVars
      logical                      :: startFlag
-     character(len=LDT_CONST_PATH_LEN) :: oDir
+     character*100                :: oDir
      real                         :: outInterval
      character*50                 :: wstyle
      character*50                 :: wformat
@@ -70,7 +69,7 @@ module LDT_climoRstProcMod
      character*50                 :: outMode
      character*50                 :: outIntervalType
      integer                      :: nfiles
-     character(len=LDT_CONST_PATH_LEN), allocatable   :: outfname(:)
+     character*100, allocatable   :: outfname(:)
      type(rstoutdec), allocatable :: rstout(:)
 
   end type ldtrstdec
@@ -324,9 +323,9 @@ module LDT_climoRstProcMod
       integer                   :: t
       integer                   :: tindex
       integer                   :: ftn
-      character(len=LDT_CONST_PATH_LEN) :: dir_name
+      character*100             :: dir_name
       character*100             :: model_name
-      character(len=LDT_CONST_PATH_LEN) :: fname
+      character*100             :: fname
       integer                   :: nDims
       integer                   :: nVars
       integer                   :: nGlobalAtts

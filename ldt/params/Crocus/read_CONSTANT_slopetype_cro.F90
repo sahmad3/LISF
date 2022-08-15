@@ -1,11 +1,5 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
-! NASA Goddard Space Flight Center
-! Land Information System Framework (LISF)
-! Version 7.4
-!
-! Copyright (c) 2022 United States Government as represented by the
-! Administrator of the National Aeronautics and Space Administration.
-! All Rights Reserved.
+! NASA Goddard Space Flight Center Land Data Toolkit (LDT) v1.0
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
 !BOP
 !

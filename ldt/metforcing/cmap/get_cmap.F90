@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -27,7 +27,6 @@ subroutine get_cmap(n,findex)
   use LDT_coreMod, only : LDT_rc
   use LDT_logMod,  only : LDT_logunit
   use LDT_timeMgrMod, only : LDT_tick, LDT_get_nstep
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
   use cmap_forcingMod,only : cmap_struc
 
   implicit none
@@ -77,7 +76,7 @@ subroutine get_cmap(n,findex)
   integer :: order
   real    :: gmt1,gmt5,ts1,ts5   ! GMT times for current LDAS time and end boundary times for precip data sources
   real    :: gridDesci(20)
-  character(len=LDT_CONST_PATH_LEN) :: filename       ! Filename variables for precip data sources
+  character*80 :: filename       ! Filename variables for precip data sources
 
 !=== End Variable Definition =======================
 

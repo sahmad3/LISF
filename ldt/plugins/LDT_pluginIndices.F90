@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -25,7 +25,6 @@ module LDT_pluginIndices
 !  23 Oct 2008: Sujay Kumar  -- Initial Specification
 !  17 Jul 2012: KR Arsenault -- Updated entries with capitalization rules
 !  01 Mar 2020: Yeosang Yoon -- Added MERIT DEM
-!  28 Jun 2022: Eric Kemp -- Added NAFPA background precipitation
 !
 !EOP
   PRIVATE
@@ -218,6 +217,7 @@ module LDT_pluginIndices
    character*50, public,  parameter :: LDT_usgslcNATId    = "USGS_Native"
    character*50, public,  parameter :: LDT_modislcLISId   = "MODIS_LIS"
    character*50, public,  parameter :: LDT_modislcNATId   = "MODIS_Native"
+   character*50, public,  parameter :: LDT_mcd12q1Id      = "MCD12Q1"
    character*50, public,  parameter :: LDT_modislcPFTId   = "MODIS_Native_PFT"
    character*50, public,  parameter :: LDT_ukmoigbpPFTId  = "UKMO_IGBP_Native_PFT"
    character*50, public,  parameter :: LDT_UM_ancillaryId = "UM_Native_Ancillary"
@@ -343,10 +343,6 @@ module LDT_pluginIndices
 !- PPT:
    character*50, public,  parameter :: LDT_prismpptId     = "PRISM"
    character*50, public,  parameter :: LDT_worldclimpptId = "WORLDCLIM"
-   character*50, public,  parameter :: LDT_nafpabackgfspptId = "NAFPA_BACK_GFS"
-   character*50, public,  parameter :: LDT_nafpabackgalwempptId = &
-        "NAFPA_BACK_GALWEM"
-
 !- TMIN:
    character*50, public,  parameter :: LDT_prismtminId     = "PRISM"
    character*50, public,  parameter :: LDT_worldclimtminId = "WORLDCLIM"

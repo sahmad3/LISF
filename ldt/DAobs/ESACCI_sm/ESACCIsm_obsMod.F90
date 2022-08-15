@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -52,7 +52,6 @@ module ESACCIsm_obsMod
 ! !USES: 
   use ESMF
   use map_utils
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
 
   implicit none
 
@@ -68,8 +67,7 @@ module ESACCIsm_obsMod
 !EOP
   type, public :: esaccismobsdec
 
-     character(len=LDT_CONST_PATH_LEN)          :: odir
-     character(len=8)       :: sensor
+     character*100          :: odir
      integer                :: mo
      real                   :: version
      real,    allocatable   :: smobs(:,:)
@@ -129,15 +127,6 @@ contains
             rc=status)
        call LDT_verify(status, &
             'ESA CCI soil moisture version of data: not defined')
-    enddo
-
-    call ESMF_ConfigFindLabel(LDT_config, &
-         'ESA CCI soil moisture sensor type:', rc=status)
-    do n=1,LDT_rc%nnest
-       call ESMF_ConfigGetAttribute(LDT_Config, ESACCIsmobs(n)%sensor, &
-            rc=status)
-       call LDT_verify(status, &
-            'ESA CCI soil moisture sensor type: not defined')
     enddo
 
     do n=1,LDT_rc%nnest

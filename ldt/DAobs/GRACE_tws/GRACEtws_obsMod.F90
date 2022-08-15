@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -25,7 +25,6 @@ module GRACEtws_obsMod
 ! !USES: 
   use ESMF
   use map_utils
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
 
   implicit none
 
@@ -45,14 +44,14 @@ module GRACEtws_obsMod
      character*50  :: format
      character*50  :: wstyle
      character*50  :: wopt
-     character(len=LDT_CONST_PATH_LEN) :: odir
+     character*100 :: odir
      character*100 :: datasource 
 
 
      integer       :: reftime
      integer       :: tdims
-     character(len=LDT_CONST_PATH_LEN) :: gracefile, gracescalefile
-     character(len=LDT_CONST_PATH_LEN) :: graceerrfile
+     character*100 :: gracefile, gracescalefile
+     character*100 :: graceerrfile
      logical       :: startMode
      integer       :: gracenc, gracenr
      real, allocatable :: tvals(:)
@@ -85,7 +84,7 @@ module GRACEtws_obsMod
 
      integer              :: process_basin_scale
      integer              :: basin_cat_max
-     character(len=LDT_CONST_PATH_LEN)        :: basinmapfile
+     character*100        :: basinmapfile
      real, allocatable    :: basin_cat(:,:)
 
      !ag (21 DEc 2017)

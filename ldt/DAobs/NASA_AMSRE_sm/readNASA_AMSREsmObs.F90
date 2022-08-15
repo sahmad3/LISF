@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -22,7 +22,6 @@ subroutine readNASA_AMSREsmObs(n)
   use ESMF
   use LDT_coreMod,      only : LDT_rc
   use LDT_logMod,       only : LDT_logunit
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
   use LDT_DAobsDataMod
   use NASA_AMSREsm_obsMod, only : NASA_AMSREsmobs
 
@@ -39,7 +38,7 @@ subroutine readNASA_AMSREsmObs(n)
   
   logical           :: alarmcheck, file_exists, readflag
   integer           :: iret
-  character(len=LDT_CONST_PATH_LEN)     :: name
+  character*200     :: name
   real              :: smc(LDT_rc%lnc(n), LDT_rc%lnr(n))
   integer           :: fnd 
   integer           :: c,r
@@ -415,7 +414,7 @@ subroutine NASA_AMSREsm_filename(name, ndir, yr, mo,da)
 
   implicit none
 ! !ARGUMENTS: 
-  character(len=*)      :: name
+  character*200      :: name
   integer           :: yr, mo, da, hr,mn
   character (len=*) :: ndir
 ! 

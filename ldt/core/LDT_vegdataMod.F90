@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -37,7 +37,6 @@ module LDT_vegdataMod
   use LDT_historyMod
   use LDT_paramDataMod
   use LDT_logMod
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
   use LDT_paramMaskCheckMod
 
   implicit none
@@ -58,7 +57,7 @@ module LDT_vegdataMod
 
   type, public :: vegdata_type_dec
 
-     character(len=LDT_CONST_PATH_LEN)        :: drootfile
+     character*140        :: drootfile
      type(LDT_paramEntry) :: rootdepth   ! Land cover-based root-depth
 
   end type vegdata_type_dec

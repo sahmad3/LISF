@@ -1,9 +1,9 @@
 !-----------------------BEGIN NOTICE -- DO NOT EDIT-----------------------
 ! NASA Goddard Space Flight Center
 ! Land Information System Framework (LISF)
-! Version 7.4
+! Version 7.3
 !
-! Copyright (c) 2022 United States Government as represented by the
+! Copyright (c) 2020 United States Government as represented by the
 ! Administrator of the National Aeronautics and Space Administration.
 ! All Rights Reserved.
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------
@@ -19,7 +19,6 @@ module GHCN_ANNdataMod
 ! !USES: 
   use ESMF
   use map_utils
-  use LDT_constantsMod, only : LDT_CONST_PATH_LEN
 
   implicit none
 
@@ -35,7 +34,7 @@ module GHCN_ANNdataMod
 !EOP
   type, public :: GHCNobsdec
 
-     character(len=LDT_CONST_PATH_LEN) :: odir
+     character*100              :: odir
      integer                    :: nstns
      real                       :: udef
      integer                    :: nts
@@ -86,7 +85,7 @@ contains
     integer            :: ts
     character*50       :: stnid
     real               :: stnlat, stnlon,stnelev
-    character(len=LDT_CONST_PATH_LEN) :: stationfile
+    character*100      :: stationfile
     integer            :: c,r
     real               :: col,row
 
